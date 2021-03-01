@@ -1,4 +1,4 @@
-let size = 16;
+let size = 16;      // squares per side
 let gridSize = 400; // in pixels
 
 const sizeButton = document.querySelector('#size');
@@ -7,7 +7,32 @@ sizeButton.addEventListener('click', changeSize);
 const clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', clearGrid);
 
-generateGrid(size);
+let mediaQuerySmall = window.matchMedia('(max-width: 450px)');
+mediaQuerySmall.addEventListener('change', decreaseGridSize);
+
+let mediaQuerySmaller = window.matchMedia('(max-width: 250px)');
+mediaQuerySmaller.addEventListener('change', decreaseGridSize);
+
+let mediaQueryBig = window.matchMedia('(min-width: 251px)');
+mediaQueryBig.addEventListener('change', increaseGridSize);
+
+let mediaQueryBigger = window.matchMedia('(min-width: 451px)');
+mediaQueryBigger.addEventListener('change', increaseGridSize);
+
+function increaseGridSize(event) {
+    if (event.matches) {
+        gridSize *= 2;
+        generateGrid(size);
+    }
+}
+
+function decreaseGridSize(event) {
+    if (event.matches) {
+        gridSize /= 2;
+        generateGrid(size);
+    }
+}
+
 
 function clearGrid(event) {
     const gridSquares = [ ...document.querySelectorAll('#grid div') ];
@@ -73,3 +98,8 @@ function changeColor(event) {
 function getRandomColorValue() {
     return Math.floor(Math.random() * 256);
 }
+
+decreaseGridSize(mediaQuerySmall);
+decreaseGridSize(mediaQuerySmaller);
+
+generateGrid(size);

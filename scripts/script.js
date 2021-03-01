@@ -4,12 +4,16 @@ let gridSize = 400; // in pixels
 const sizeButton = document.querySelector('#size');
 sizeButton.addEventListener('click', changeSize);
 
-const clearButton = document.querySelector('#size');
+const clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', clearGrid);
 
 generateGrid(size);
 
 function clearGrid(event) {
+    const gridSquares = [ ...document.querySelectorAll('#grid div') ];
+    gridSquares.forEach((square) => {
+        square.style.backgroundColor = 'transparent';
+    });
 }
 
 function changeSize(event) {
@@ -38,9 +42,9 @@ function destroyExistingGrid(grid) {
 }
 
 function getSize() {
-    let userInput = parseInt(prompt('Enter a grid size (1-64)'));
-    while (isNaN(userInput) || (userInput < 1 || userInput > 64)) {
-        userInput = parseInt(prompt('Please a enter a valid grid size (1-64)'));
+    let userInput = parseInt(prompt('Enter a grid size (1-100)'));
+    while (isNaN(userInput) || (userInput < 1 || userInput > 100)) {
+        userInput = parseInt(prompt('Please a enter a valid grid size (1-100)'));
     }
 
     return userInput;
@@ -53,8 +57,7 @@ function getGridSquare() {
     square.addEventListener('mouseover', changeColor);
     square.style.width = `${divSize}px`;
     square.style.height = square.style.width;
-    square.style.border = '1px solid black';
-    square.style.borderRadius = '0px';
+    square.style.border = '0px solid black';
 
     return square;
 }

@@ -32,13 +32,9 @@ body {
 */
 
 #grid {
-    border: 2px solid black;
+    border: 4px solid black;
     border-radius: 10px;
     display: grid;
-}
-
-#grid-elements {
-    border: 2px solid black;
 }
 
 #heading {

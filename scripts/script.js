@@ -64,5 +64,12 @@ function getGridSquare() {
 
 function changeColor(event) {
     const div = event.target;
-    div.style.backgroundColor = `black`;
+    let redValue = getRandomColorValue();
+    let blueValue = getRandomColorValue();
+    let greenValue = getRandomColorValue();
+    div.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+}
+
+function getRandomColorValue() {
+    return Math.floor(Math.random() * 256);
 }

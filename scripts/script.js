@@ -67,9 +67,9 @@ function destroyExistingGrid(grid) {
 }
 
 function getSize() {
-    let userInput = parseInt(prompt('Enter a grid size (1-100)'));
+    let userInput = parseInt(prompt('Enter a grid size [1-100]'));
     while (isNaN(userInput) || (userInput < 1 || userInput > 100)) {
-        userInput = parseInt(prompt('Please a enter a valid grid size (1-100)'));
+        userInput = parseInt(prompt('Please a enter a valid grid size [1-100]'));
     }
 
     return userInput;
